@@ -1,0 +1,180 @@
+<!-- this is the base files. All html files which will be extended with base.html will inherent from this file.
+This file has been created to have code which is need on several html pages at one place. -->
+
+{%  load staticfiles %}
+<html>
+<head>
+
+    <!-- here is the reference to the local style.css and the reference to bootstrap. -->
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+    <title>Architectural Inspiration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+
+
+    {% block head %}
+    {%  endblock %}
+</head>
+
+<body>
+
+
+<!-- This is the header with the introduction text and the two buttons (upload and return to main page). -->
+
+<header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+
+
+            <strong id="title">Architectural Inspiration</strong>
+
+        </div>
+      </div>
+    </header>
+
+
+
+        <div class="container">
+            <div class="welcome" style="text-align: center">
+                 <h1 style="margin-top: 5px">Welcome to our photogallery for Architects</h1>
+                    <p>On this site you can find pictures of buildings.
+                        The picture are made by your friends. <br>
+                        </p>
+                      <p>
+                        <a href=http://127.0.0.1:8000/uploadform target="_blank" class="btn btn-primary my-2">Upload Picture</a>
+                          <a href=http://127.0.0.1:8000 target="_blank" class="btn btn-primary my-2">Main Page</a>
+                      </p>
+            </div>
+        </div>
+
+
+
+<!-- this part is the static navigation bar. The function hands over the architectural style parameter  ArchitecturalStyle_View?parameter= {{ 'Renaissance' }}
+With this parameter the category will be called and the items of this catgory will be shown. -->
+
+
+ <div class="row">
+  <div class="col-md-2">
+      <div class="navigation">
+        <table class="table">
+          <tr><th>Architectural Styles</th></tr>
+
+          <tr><td><a href="Country_View?parameter={{ 'Ancient Roman architecture' }}">Ancient Roman architecture</a></td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'Persian Islamic architecture' }}">Persian Islamic architecture</a></td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'Gothic architecture' }}">Gothic architecture</a></td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'Renaissance' }}">Renaissance</a></td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'Baroque architecture' }}">Baroque architecture</a></td></tr>
+            <tr><td><a href="Country_View?parameter={{ 'Neoclassical architecture' }}">Neoclassical architecture </a> </td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'Postmodern architecture' }}">Postmodern architecture</a></td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'Art Deco' }}">Art Deco</a></td></tr>
+          <tr><td><a href="Country_View?parameter={{ 'others' }}">others</a></td></tr>
+
+
+
+
+      </table>
+  </div>
+  </div>
+
+
+     <!-- This part shows all pictures of one category. Each item (picture) has the functionality to download the picture or to open it in widescreen.  -->
+
+
+ <div class="col-md-10">
+         {% for category in categories %}
+
+             {% for item in category.item_set.all %}
+                <!-- <div class="col-md-4">-->
+                     <div class="card mb-2 box-shadow" style="display:inline-block;margin:10px;width:calc(33% - 21px);">
+                         <img class="card-img-top" src="{{ item.image.url }} " onclick="FensterOeffnen(this.href); return false" alt="{{ item.name }}">
+
+                         <div class="card-body">
+                             <p class="card-text">{{ item.name }}</p>
+                             <p class="card-text">{{ item.description }}</p>
+                             <div class="d-flex justify-content-between align-items-center">
+                                 <!--<div class="btn-group">-->
+                                     <button type="button" class="btn btn-sm btn-outline-secondary">
+                                         <a href="{{ MEDIA_URL }}{{item.image.url}}" download="{{ item.name }}" >Download Image </a></button>
+
+                                     <button type="button" class="btn btn-sm btn-outline-secondary">
+
+                                     <a href="{{ MEDIA_URL }}{{item.image.url}}"  onclick="FensterOeffnen(this.href); return false" >Show picture</a></button>
+
+                                 <!--</div>-->
+
+                             </div>
+
+
+
+                         </div>
+                     </div>
+                 <!--</div>-->
+
+
+
+
+             {% endfor %}
+         {% endfor %}
+
+
+    {% for category in categories%}
+
+        <!-- If no picture of this architectural style is existing, the following error will be shown.  -->
+
+
+                     {% empty %}
+
+
+                         <div class="alert alert-danger">
+                             <strong>No results found. Be the first to upload pictures of this architectural style by pressing the upload picture!</strong>
+                         </div>
+                             <div class="alert alert-warning">
+
+
+                     {% endfor %}
+
+
+
+
+
+
+
+
+
+
+ </div>
+
+
+
+
+
+
+
+</body>
+</html>

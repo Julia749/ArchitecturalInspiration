@@ -1,0 +1,106 @@
+<!-- This file is the form which is necessary to upload items (pictures) to the database. The uploaded pictures are an instance of the class item.
+<form method="post" enctype="multipart/form-data"> is important in this method to upload the picture. Without this comment it is not possible.
+The code { form.as_p } displays  all parameters defined in the form. The form is generated automatically
+-->
+
+
+
+{%  load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+
+    <title>Architectural Inspiration</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+
+
+    {% block head %}
+    {%  endblock %}
+</head>
+
+<body>
+{% comment %}<div class="page">{% endcomment %}
+<header>
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+
+
+            <strong id="title">Architectural Inspiration</strong>
+
+        </div>
+    </div>
+</header>
+
+
+
+<div class="container">
+    <div class="welcome" style="text-align: center">
+        <h1 style="margin-top: 5px">Welcome to Architectural Inspiration</h1>
+        <p>Upload your pictures here!</p>
+        <p>
+            <a href="http://127.0.0.1:8000/" target="_blank" class="btn btn-primary my-2">Back to main page</a>
+        </p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<body>
+
+
+ <div class="col-md-10">
+    <div class="container">
+        <h1>Upload Your Picture</h1>
+
+
+
+
+        <form method="post" enctype="multipart/form-data">
+
+
+            {%  csrf_token %}
+            {{ form.as_p }}
+                <button type="submit" class="btn btn-primary my-2">Submit</button>
+        </form>
+
+    </div>
+    </div>
+ </div>
+</div>
+</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,44 @@
+<!--This html file is needed in case an single item shall be displayed. If the ID cannot be found the error message (invalid ID) will be displayed (-->
+
+{% extends 'base.html' %}
+
+{% block head %}
+
+        <title>{{ item.name }} - Detail view</title>
+
+{%endblock%}
+
+
+{% block body %}
+
+
+    <a href="{% url 'index' %}">&lt; Back</a>
+
+
+    {% if item != None %}
+
+
+        {{ item.name }}
+        <h4>{{ item.category}}</h4>
+    <p> {{ item.description }}</p>
+
+    {% else %}
+        <p>Invalid ID</p>
+    {% endif %}
+
+
+    {% if item.image != None %}
+
+
+
+        <img src="{{ item.image.url }}" width="300" height="auto">
+
+
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
