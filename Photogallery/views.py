@@ -24,9 +24,9 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-#Show Items of one category habdover with parameter 'parameter'. The function .filter(parameter) enables to load pictures only from country.
+#Show Items of one category habdover with parameter 'parameter'. The function .filter(parameter) enables to load pictures only from one Style.
 
-def showPicturesfromCountry(request):
+def showPicturesbyStyle(request):
     Category.objects.get(id=1).item_set.all()
     your_parameter = request.GET['parameter']
     load_country = your_parameter
