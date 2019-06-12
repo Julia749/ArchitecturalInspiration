@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='item',
-            name='countries',
+            name='ArchitecturalStyle',
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AddField(

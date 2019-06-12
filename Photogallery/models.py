@@ -19,7 +19,7 @@ class Category(models.Model):
 
 class Item(models.Model):
 
- #  countries = models.TextField(null=True, blank=True) not needed longer. Has not be deleted to possible side effects on Admin area.
+ #  ArchitecturalStyle = models.TextField(null=True, blank=True) not needed longer. Has not be deleted to possible side effects on Admin area.
     name = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to='media', blank=True)
