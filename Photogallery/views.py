@@ -69,7 +69,7 @@ def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = Item( name=request.POST['name'],  description=request.POST['description'],    image=request.FILES['image'],  category_id=request.POST['category'])
+            instance = Item(name=request.POST['name'],  description=request.POST['description'],    image=request.FILES['image'],  category_id=request.POST['category'])
 
             instance.save()
             return HttpResponseRedirect('item/')
