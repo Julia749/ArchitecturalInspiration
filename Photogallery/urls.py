@@ -15,18 +15,25 @@ Including another URLconf
 """
 from django.conf.urls import url
 from Photogallery import views
+from django.contrib.auth import views as auth_views
+from django.views.generic.base import TemplateView
+
 
 
 # In the URLs.py it is defined which adress can be inserted in the browser and which functionaliy from the views.py will be called.
 #for each item a URL will be generated
 
 urlpatterns = [
-url(r'^$', views.index, name='index'),
-url(r'^item/(?P<item_Id>[0-9]+)', views.item, name='item'),
+    url(r'^$', views.home, name='home'),
+    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'login'}, name='logout'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^gallery/$', views.index, name='index'),
+    url(r'^gallery/item/(?P<item_Id>[0-9]+)', views.item, name='item'),
 
-url('uploadform/', views.upload_file, name='uploadform'),
-url('ArchitecturalStyle_View/', views.showPicturesbyStyle, name='ArchitecturalStyle_view'),
-
+    url('gallery/uploadform/', views.upload_file, name='uploadform'),
+    url('gallery/ArchitecturalStyle_View/', views.showPicturesbyStyle, name='ArchitecturalStyle_view'),
 
 
 ]
+
