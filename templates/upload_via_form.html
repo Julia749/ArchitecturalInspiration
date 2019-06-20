@@ -63,14 +63,13 @@ The code { form.as_p } displays  all parameters defined in the form. The form is
         <h1 style="margin-top: 5px">Welcome to Architectural Inspiration</h1>
         <p>Upload your pictures here!</p>
         <p>
-            <a href="http://127.0.0.1:8000/" target="_blank" class="btn btn-primary my-2">Back to main page</a>
+            <a href="http://127.0.0.1:8000/gallery" target="_blank" class="btn btn-primary my-2">Back to main page</a>
         </p>
     </div>
 </div>
 
 
-
-
+{% if user.is_authenticated %}
 
 
 
@@ -80,7 +79,7 @@ The code { form.as_p } displays  all parameters defined in the form. The form is
 
  <div class="col-md-10">
     <div class="container">
-        <h1>Upload Your Picture</h1>
+        <h2>Upload Your Picture</h2>
 
 
 
@@ -99,7 +98,7 @@ The code { form.as_p } displays  all parameters defined in the form. The form is
 </div>
 </body>
 
-
+{% endif %}
 
 
 

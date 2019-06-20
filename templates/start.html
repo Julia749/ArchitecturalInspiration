@@ -1,16 +1,51 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
+      <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-LS4/wo5Z/8SLpOLHs0IbuPAGOWTx30XSoZJ8o7WKH0UJhRpjXXTpODOjfVnNjeHu" crossorigin="anonymous">
     <meta charset="utf-8">
-    <title>{% block title %}Simple is Better Than Complex{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+  <title>Architectural Inspiration</title>
+
+    <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-md-7 py-4">
+                </div>
+                <div class="col-sm-4 offset-md-1 py-4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+
+
+            <strong id="title">Architectural Inspiration</strong>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+             <a href="{% url 'login' %}">Login </a>
+             {% endif %}
+
+        </div>
+    </div>
+
   </head>
   <body>
     <header>
-      <h1>My Site</h1>
+
       {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}">logout</a>
-      {% else %}
-        <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
+         <p style="margin-left:20px; margin-top:30px">
+             Welcome back {{ user.username }}!
+              </p>
+               <p style="margin-left:20px">
+             <a href=http://127.0.0.1:8000/gallery target="_blank" class="btn btn-primary my-2">View gallery</a>
+
       {% endif %}
       <hr>
     </header>

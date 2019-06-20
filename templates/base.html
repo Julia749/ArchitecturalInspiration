@@ -9,45 +9,32 @@ This file has been created to have code which is need on several html pages at o
 
   <title>Architectural Inspiration</title>
 
+</head>
 
- <head>
-    <meta charset="utf-8">
-    <title>{% block title %}Simple is Better Than Complex{% endblock %}</title>
-  </head>
-  <body>
-    <header>
-      <h1>My Site</h1>
-      {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}">logout</a>
-      {% else %}
-        <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
-      {% endif %}
-      <hr>
-    </header>
+<body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Architectural Inspiration</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">Categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
-          </li>
-        </ul>
-      </div>
+
+  <header>
+    
+                </div>
+            </div>
+        </div>
     </div>
-  </nav>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+
+            <strong id="title">Architectural Inspiration</strong>
+
+      <!-- #nav-menu-container -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">logout</a>
+      {% else %}
+        <a align="right" href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">signup</a>
+      {% endif %}
+        </div>
+    </div>
+</header>
 
 <div class="container">
             <div class="welcome" style="text-align: center">
@@ -56,32 +43,39 @@ This file has been created to have code which is need on several html pages at o
                         <br>
                         </p>
                       <p>
-                        <a href=http://127.0.0.1:8000/uploadform target="_blank" class="btn btn-primary my-2">Upload Picture</a>
+                        <a href=http://127.0.0.1:8000/gallery/uploadform target="_blank" class="btn btn-primary my-2">Upload Picture</a>
                           <a href=http://127.0.0.1:8000 target="_blank" class="btn btn-primary my-2">Main Page</a>
+
                       </p>
             </div>
         </div>
-
- <!-- About Section -->
-  <section id="about" class="about-section text-center">
-    <div class="container">
+<!-- This part shows up, if the user has logged in -->
+ {% if user.is_authenticated %}
+ <!-- Section to filter architectural styles-->
+  <section id="about" class="about-section text-center" align="center">
+    <div class="container" style="align-content: center">
       <div class="row">
         <div class=col-md-10">
             <div class="navigation">
+                <h3 style="margin-top: 5px">Architectural Styles</h3>
                  <table class="table">
-                      <tr><td>Architectural Styles</td></tr>
-
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Ancient Roman architecture' }}">Ancient Roman architecture</a></td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Persian Islamic architecture' }}">Persian Islamic architecture</a></td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Gothic architecture' }}">Gothic architecture</a></td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Renaissance' }}">Renaissance</a></td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Baroque architecture' }}">Baroque architecture</a></td></tr>
-                     <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Neoclassical architecture' }}">Neoclassical architecture </a> </td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Postmodern architecture' }}">Postmodern architecture</a></td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Art Deco' }}">Art Deco</a></td></tr>
-          <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'others' }}">others</a></td></tr>
-      </table>
-
+                    <tr><td><a href="ArchitecturalStyle_View?parameter={{ 'Ancient Roman architecture' }}">Ancient Roman architecture</a></td>
+                    <td><a href="ArchitecturalStyle_View?parameter={{ 'Persian Islamic architecture' }}">Persian Islamic architecture</a></td>
+                    <td><a href="ArchitecturalStyle_View?parameter={{ 'Gothic architecture' }}">Gothic architecture</a></td>
+                    <td><a href="ArchitecturalStyle_View?parameter={{ 'Renaissance' }}">Renaissance</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Baroque architecture' }}">Baroque architecture</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Neoclassical architecture' }}">Neoclassical architecture </a> </td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Postmodern architecture' }}">Postmodern architecture</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Art Deco' }}">Art Deco</a></td></tr>
+                    <tr> <td><a href="ArchitecturalStyle_View?parameter={{ 'Art Deco' }}">Art Deco</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Art Nouveau' }}">Art Nouveau</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Bauhaus' }}">Bauhaus</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Beaux-Arts' }}">Beaux-Arts</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Classic architecture' }}">Classic Architecture</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Deconstructivism' }}">Deconstructivism</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'Historicism' }}">Historicism</a></td>
+                   <td><a href="ArchitecturalStyle_View?parameter={{ 'others' }}">others</a></td></tr>
+                </table>
             <a href="http://startbootstrap.com/template-overviews/grayscale/"></a></p>
         </div>
       </div>
@@ -90,15 +84,10 @@ This file has been created to have code which is need on several html pages at o
   </section>
 
 
-
-
-
-
-
      <!-- This part shows all pictures of one category. Each item (picture) has the functionality to download the picture or to open it in widescreen.  -->
 
 
- <div class="col-md-10">
+ <div class="col-md-10" style="align-content: center" align="center">
          {% for category in categories %}
 
              {% for item in category.item_set.all %}
@@ -119,10 +108,7 @@ This file has been created to have code which is need on several html pages at o
                                      <a href="{{ MEDIA_URL }}{{item.image.url}}"  onclick="FensterOeffnen(this.href); return false" >Show picture</a></button>
 
                                  <!--</div>-->
-
                              </div>
-
-
 
                          </div>
                      </div>
@@ -133,7 +119,6 @@ This file has been created to have code which is need on several html pages at o
 
              {% endfor %}
          {% endfor %}
-
 
     {% for category in categories%}
 
@@ -202,6 +187,7 @@ This file has been created to have code which is need on several html pages at o
     </div>
   </section>
 
+
   <!-- Footer -->
   <footer class="bg-black small text-center text-white-50">
     <div class="container">
@@ -209,7 +195,6 @@ This file has been created to have code which is need on several html pages at o
     </div>
   </footer>
 
-
-
+ {% endif %}
 </body>
 </html>
